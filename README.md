@@ -11,8 +11,8 @@
 - Conditional feedback.
 - Simple terminal interface.
 ## Group Members 
-Aimen Mahmud       UGR/6204/17 
-Beamlak Seifu      UGR/9479/17 
-Biruk Amanuel      UGR/0008/17 
-Biruktawit Kinde   UGR/2912/17 
-Fares Girum        UGR/2958/17 
+- Aimen Mahmud       UGR/6204/17 
+- Beamlak Seifu      UGR/9479/17
+- Biruk Amanuel      UGR/0008/17
+- Biruktawit Kinde   UGR/2912/17 
+- Fares Girum        UGR/2958/17 
