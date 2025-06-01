@@ -75,3 +75,33 @@ def log_session():
         print("⏳ Quick session! Even small efforts add up over time.")
     else:
         print("🙂 Keep tracking your sessions and aim for steady improvement.")
+def show_summary():
+    print("\n=== Study Summary ===")
+    total_hours = 0
+    total_focus = 0
+    session_count = 0
+    subject_totals = {}
+
+    for date, sessions in study_log.items():
+        print(f"\n📅 {date}")
+        for s in sessions:
+            print(f" - {s['subject']}: {s['duration']} hrs (Focus: {s['focus']}/5)")
+            total_hours += s['duration']
+            total_focus += s['focus']
+            session_count += 1
+
+            subj = s['subject']
+            if subj not in subject_totals:
+                subject_totals[subj] = {'hours': 0, 'count': 0}
+            subject_totals[subj]['hours'] += s['duration']
+            subject_totals[subj]['count'] += 1
+
+    if session_count > 0:
+        avg_focus = round(total_focus / session_count, 2)
+        print(f"\n📊 Total Study Hours: {total_hours}")
+        print(f"📈 Average Focus Level: {avg_focus}/5")
+        print("\n📚 Subject-wise Hours:")
+        for subj, data in subject_totals.items():
+            print(f" - {subj}: {data['hours']} hrs over {data['count']} session(s)")
+    else:
+        print("No sessions logged yet.")
