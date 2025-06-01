@@ -157,3 +157,35 @@ def filter_sessions():
 
     if not found:
         print("No matching sessions found.")
+
+def main():
+    load_from_file()
+
+    while True:
+        print("\n=== Smart Study Session Logger ===")
+        print("1. Log a new session")
+        print("2. Show summary")
+        print("3. Save log to file")
+        print("4. Export log to CSV")
+        print("5. Search/filter sessions")
+        print("6. Exit")
+
+        choice = input("Choose an option (1-6): ").strip()
+
+        if choice == "1":
+            log_session()
+        elif choice == "2":
+            show_summary()
+        elif choice == "3":
+            save_to_file()
+        elif choice == "4":
+            export_to_csv()
+        elif choice == "5":
+            filter_sessions()
+        elif choice == "6":
+            print("Goodbye and happy studying! 📚")
+            break
+        else:
+            print("❌ Invalid option. Please try again.")
+
+main()
