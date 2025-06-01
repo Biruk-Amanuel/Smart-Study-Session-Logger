@@ -1,3 +1,4 @@
+import csv
 
 study_log = {}
 
@@ -75,6 +76,7 @@ def log_session():
         print("⏳ Quick session! Even small efforts add up over time.")
     else:
         print("🙂 Keep tracking your sessions and aim for steady improvement.")
+
 def show_summary():
     print("\n=== Study Summary ===")
     total_hours = 0
@@ -105,3 +107,20 @@ def show_summary():
             print(f" - {subj}: {data['hours']} hrs over {data['count']} session(s)")
     else:
         print("No sessions logged yet.")
+
+def save_to_file():
+    with open("study_log.txt", "w") as f:
+        for date, sessions in study_log.items():
+            f.write(f"{date}\n")
+            for s in sessions:
+                f.write(f"  {s['subject']} - {s['duration']} hrs, Focus: {s['focus']}/5\n")
+    print("📁 Log saved to 'study_log.txt'.")
+
+def export_to_csv():
+    with open("study_log.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Date", "Subject", "Duration (hrs)", "Focus (1-5)"])
+        for date, sessions in study_log.items():
+            for s in sessions:
+                writer.writerow([date, s["subject"], s["duration"], s["focus"]])
+    print("📄 Log exported to 'study_log.csv'.")
