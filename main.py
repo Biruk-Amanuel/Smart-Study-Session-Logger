@@ -124,3 +124,36 @@ def export_to_csv():
             for s in sessions:
                 writer.writerow([date, s["subject"], s["duration"], s["focus"]])
     print("📄 Log exported to 'study_log.csv'.")
+    
+def filter_sessions():
+    print("\n--- Filter Options ---")
+    print("1. By subject")
+    print("2. By date")
+    print("3. By high focus sessions (4 or 5)")
+    option = input("Choose filter type (1-3): ").strip()
+
+    found = False
+    if option == "1":
+        keyword = input("Enter subject name: ").strip().title()
+        for date, sessions in study_log.items():
+            for s in sessions:
+                if s['subject'] == keyword:
+                    print(f"{date}: {s['subject']} - {s['duration']} hrs, Focus: {s['focus']}/5")
+                    found = True
+
+    elif option == "2":
+        date = input("Enter date (DD-MM-YYYY): ").strip()
+        if date in study_log:
+            for s in study_log[date]:
+                print(f"{date}: {s['subject']} - {s['duration']} hrs, Focus: {s['focus']}/5")
+                found = True
+
+    elif option == "3":
+        for date, sessions in study_log.items():
+            for s in sessions:
+                if s['focus'] >= 4:
+                    print(f"{date}: {s['subject']} - {s['duration']} hrs, Focus: {s['focus']}/5")
+                    found = True
+
+    if not found:
+        print("No matching sessions found.")
